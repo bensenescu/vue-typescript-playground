@@ -12,29 +12,30 @@
   </v-card>
 </template>
 
-<script>
-import { mapMutations } from 'vuex';
+<script lang="ts">
+import Vue from 'vue';
+import { getModule } from 'vuex-module-decorators';
+import VideoStore from './store/modules/video';
+import { Video } from './types';
 
-export default {
+export default Vue.extend({
   name: 'youtube-form',
   data() {
     return {
       valid: true,
-      video: {},
+      video: {} as Video,
     };
   },
   methods: {
-    ...mapMutations({
-      addVideo: 'addVideo',
-    }),
-    async onSubmit(evt) {
+    async onSubmit(evt: Event) {
       evt.preventDefault();
       try {
-        this.addVideo(this.video);
+        VideoStore.addVideo(this.video);
+        // this.VideoModule.addVideo(this.video);
       } catch (error) {
         console.error(error);
       }
     },
   },
-};
+});
 </script>

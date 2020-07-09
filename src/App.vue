@@ -7,15 +7,16 @@
   </v-app>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import YoutubeForm from './YoutubeForm.vue';
 import VideoList from './VideoList.vue';
 
-export default {
+export default Vue.extend({
   name: 'App',
   components: {
     YoutubeForm,
     VideoList,
   },
-};
+});
 </script>

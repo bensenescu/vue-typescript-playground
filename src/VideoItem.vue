@@ -16,11 +16,14 @@
   </v-card>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue, { PropType } from 'vue';
+import { Video } from './types';
+
+export default Vue.extend({
   name: 'video-item',
   props: {
-    video: { type: Object, required: true },
+    video: { type: Object as PropType<Video>, required: true },
   },
   data() {
     return {
@@ -30,12 +33,12 @@ export default {
     };
   },
   methods: {
-    sub(val) {
+    sub(val : number) {
       this.counter = this.counter - val;
     },
-    add(val) {
+    add(val : number) {
       this.counter = this.counter + val;
     },
   },
-};
+});
 </script>

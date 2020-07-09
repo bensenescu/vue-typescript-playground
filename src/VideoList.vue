@@ -6,18 +6,21 @@
   </v-list>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
+import VideoStore from './store/modules/video';
+import { Video } from './types';
 import VideoItem from './VideoItem.vue';
 
-export default {
+export default Vue.extend({
   name: 'video-list',
   components: {
     VideoItem,
   },
   computed: {
-    videos() {
-      return this.$store.state.videos;
+    videos(): Array<Video> {
+      return VideoStore.videos;
     },
   },
-};
+});
 </script>
